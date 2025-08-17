@@ -1,12 +1,16 @@
-import pyautogui #mouse jiggles until stopped with CRT C
+import pyautogui #mouse jiggles for x amount of seconds
 
 import time
 
-#End mouse jiggling with CRT+C
+start_time = time.time()
+duration = int(input("How long would you like to jiggle?: "))
+end_time = start_time + duration
 
-userInput = input("What to say: ")
-while userInput == "yes":
-  
-   pyautogui.moveRel(5,0, duration =0.1)
-   pyautogui.moveRel(-5,0, duration =0.1)
-   time.sleep(2)
+def jiggleMouse(end_time):
+    while time.time() < end_time:
+        pyautogui.moveRel(5,0, duration =0.1)
+        pyautogui.moveRel(-5,0, duration =0.1)
+        time.sleep(2)
+    print('done')
+    
+jiggleMouse(end_time)
